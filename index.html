@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تحميل تطبيق تاريخي — المركز التاريخي | أ. أحمد سليم</title>
+  <meta name="description" content="المنصة التعليمية الرسمية لمادة التاريخ للثانوية العامة — امتحانات ذكية، بنك أسئلة شامل، حضور بالباركود، وبوابة ولي الأمر. حمّل تطبيق الأستاذ أحمد سليم الرسمي الآن.">
+  <meta name="theme-color" content="#0A1828">
+
+  <!-- OpenGraph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="تطبيق تاريخي — المنصة الرسمية للأستاذ أحمد سليم">
+  <meta property="og:description" content="امتحانات تفاعلية، حضور ذكي بالباركود، وبوابة متابعة لولي الأمر. حمّل التطبيق الرسمي لأجهزة أندرويد.">
+  <meta property="og:image" content="icon.png">
+  <link rel="icon" type="image/png" href="icon.png">
+
+  <!-- Google Fonts: Cairo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy-900: #071320;
+      --navy-800: #0D2035;
+      --navy-700: #142F4D;
+      --gold-500: #C9A84C;
+      --gold-400: #E2C46E;
+      --gold-300: #F3DC95;
+      --gold-glow: rgba(201, 168, 76, 0.28);
+      --turq-500: #1B8A80;
+      --turq-400: #29AC9F;
+      --turq-glow: rgba(27, 138, 128, 0.35);
+      --papyrus: #F9F6F0;
+      --surface-white: #FFFFFF;
+      --text-main: #141E28;
+      --text-muted: #57687B;
+      --border-gold: rgba(201, 168, 76, 0.28);
+      --shadow-card: 0 10px 30px rgba(10, 24, 40, 0.07);
+      --shadow-hover: 0 16px 45px rgba(10, 24, 40, 0.14);
+      --radius-sm: 10px;
+      --radius-md: 18px;
+      --radius-lg: 26px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+      background-color: var(--papyrus);
+      color: var(--text-main);
+      line-height: 1.65;
+      direction: rtl;
+      overflow-x: hidden;
+      padding-bottom: 70px;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    /* شريط الملاحة العلوي */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7, 19, 32, 0.94);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-gold);
+      padding: 12px 24px;
+    }
+    .topbar-wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .brand-logo img {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px var(--gold-glow);
+      border: 1px solid var(--gold-500);
+    }
+    .brand-info h1 {
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--gold-300);
+      line-height: 1.15;
+    }
+    .brand-info span {
+      font-size: 0.76rem;
+      color: #9DB1C5;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .nav-link {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #CFDCE8;
+      transition: color 0.2s;
+    }
+    .nav-link:hover {
+      color: var(--gold-400);
+    }
+    .nav-btn-action {
+      background: linear-gradient(135deg, var(--gold-400), var(--gold-500));
+      color: var(--navy-900);
+      font-weight: 800;
+      font-size: 0.85rem;
+      padding: 8px 18px;
+      border-radius: 50px;
+      box-shadow: 0 3px 12px var(--gold-glow);
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .nav-btn-action:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(201, 168, 76, 0.45);
+    }
+
+    /* الهيرو الرئيسي */
+    .hero {
+      position: relative;
+      background: radial-gradient(circle at 85% 20%, #173859 0%, var(--navy-800) 60%, var(--navy-900) 100%);
+      color: #FFFFFF;
+      padding: 70px 24px 90px;
+      border-bottom: 4px solid var(--gold-500);
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: 
+        radial-gradient(rgba(201, 168, 76, 0.08) 1.5px, transparent 1.5px);
+      background-size: 36px 36px;
+      pointer-events: none;
+    }
+    .hero-container {
+      max-width: 1120px;
+      margin: 0 auto;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 45px;
+      align-items: center;
+    }
+    .badge-official {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(201, 168, 76, 0.15);
+      border: 1px solid rgba(201, 168, 76, 0.45);
+      color: var(--gold-300);
+      padding: 6px 18px;
+      border-radius: 50px;
+      font-size: 0.86rem;
+      font-weight: 800;
+      margin-bottom: 22px;
+    }
+    .pulse-indicator {
+      width: 9px;
+      height: 9px;
+      background-color: #2ECC71;
+      border-radius: 50%;
+      box-shadow: 0 0 12px #2ECC71;
+      animation: pulseAnim 1.8s infinite;
+    }
+    @keyframes pulseAnim {
+      0% { opacity: 0.4; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.25); }
+      100% { opacity: 0.4; transform: scale(0.9); }
+    }
+    .hero-title {
+      font-size: 2.85rem;
+      font-weight: 900;
+      line-height: 1.22;
+      margin-bottom: 18px;
+    }
+    .hero-title span {
+      background: linear-gradient(135deg, #FFFFFF 15%, var(--gold-300) 90%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-desc {
+      font-size: 1.15rem;
+      color: #BACDD $\rightarrow$ #BACDD9;
+      color: #C1D4E6;
+      line-height: 1.8;
+      margin-bottom: 34px;
+      max-width: 620px;
+    }
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+    }
+    .btn-download-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+      background: linear-gradient(135deg, var(--turq-400), var(--turq-500));
+      color: #FFFFFF;
+      padding: 17px 32px;
+      border-radius: var(--radius-md);
+      font-size: 1.2rem;
+      font-weight: 900;
+      box-shadow: 0 12px 35px var(--turq-glow);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+    .btn-download-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 45px rgba(41, 172, 159, 0.5);
+      background: linear-gradient(135deg, #32BDB0, var(--turq-500));
+    }
+    .btn-download-primary:active {
+      transform: scale(0.98);
+    }
+    .btn-download-primary .btn-dl-icon {
+      font-size: 2rem;
+      line-height: 1;
+    }
+    .btn-download-primary small {
+      display: block;
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.85);
+      margin-top: 3px;
+    }
+    .btn-qr-trigger, .btn-share-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(201, 168, 76, 0.35);
+      color: var(--gold-300);
+      padding: 16px 22px;
+      border-radius: var(--radius-md);
+      font-size: 0.95rem;
+      font-weight: 800;
+      transition: all 0.25s ease;
+    }
+    .btn-qr-trigger:hover, .btn-share-trigger:hover {
+      background: rgba(201, 168, 76, 0.18);
+      transform: translateY(-2px);
+    }
+
+    /* مؤشر تقدم التنزيل الفوري عند الضغط */
+    #downloadProgressBox {
+      display: none;
+      margin-top: 20px;
+      background: rgba(27, 138, 128, 0.2);
+      border: 1px solid var(--turq-400);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      max-width: 480px;
+    }
+    .progress-bar-bg {
+      height: 8px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 8px;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--gold-400), var(--turq-400));
+      transition: width 0.3s;
+    }
+
+    /* بطاقة المعلم الجانبية */
+    .hero-profile-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-lg);
+      padding: 28px 22px;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    }
+    .profile-avatar-frame {
+      width: 145px;
+      height: 145px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      border: 3px solid var(--gold-500);
+      padding: 4px;
+      background: var(--navy-800);
+      box-shadow: 0 0 28px var(--gold-glow);
+    }
+    .profile-avatar-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .profile-name {
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: var(--gold-300);
+      margin-bottom: 4px;
+    }
+    .profile-role {
+      font-size: 0.9rem;
+      color: #A9BDD1;
+      margin-bottom: 16px;
+    }
+    .profile-quote {
+      font-size: 0.88rem;
+      color: #E2ECF5;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 12px 14px;
+      line-height: 1.65;
+      border-right: 3px solid var(--gold-500);
+      text-align: right;
+    }
+
+    /* الحاوية الرئيسية للمحتوى */
+    .page-container {
+      max-width: 1120px;
+      margin: -38px auto 70px;
+      padding: 0 20px;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* شريط المواصفات الفنية */
+    .specs-card {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      background: var(--surface-white);
+      border-radius: var(--radius-md);
+      padding: 22px;
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(201, 168, 76, 0.28);
+      margin-bottom: 50px;
+    }
+    .spec-node {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 6px 14px;
+      border-left: 1px solid #EAE3D6;
+    }
+    .spec-node:last-child {
+      border-left: none;
+    }
+    .spec-badge-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: rgba(201, 168, 76, 0.12);
+      color: var(--gold-500);
+      display: grid;
+      place-items: center;
+      font-size: 1.45rem;
+      flex-shrink: 0;
+    }
+    .spec-meta h4 {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    .spec-meta p {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--navy-900);
+    }
+
+    /* استكشاف مزايا التطبيق بالتبويبات */
+    .section-title-wrap {
+      text-align: center;
+      margin-bottom: 38px;
+    }
+    .section-pill {
+      display: inline-block;
+      color: var(--turq-500);
+      background: rgba(27, 138, 128, 0.1);
+      padding: 5px 16px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    .section-title-wrap h2 {
+      font-size: 2.1rem;
+      font-weight: 900;
+      color: var(--navy-900);
+      line-height: 1.3;
+    }
+    .section-title-wrap p {
+      color: var(--text-muted);
+      font-size: 1.02rem;
+      max-width: 650px;
+      margin: 8px auto 0;
+    }
+
+    .features-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      background: var(--surface-white);
+      border: 1px solid #DDD3C2;
+      color: var(--navy-700);
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      transition: all 0.25s ease;
+    }
+    .tab-btn.active, .tab-btn:hover {
+      background: var(--navy-900);
+      color: var(--gold-300);
+      border-color: var(--gold-500);
+      box-shadow: 0 4px 14px rgba(10, 24, 40, 0.15);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 65px;
+    }
+    .feature-card {
+      background: var(--surface-white);
+      border-radius: var(--radius-md);
+      padding: 28px 24px;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      box-shadow: var(--shadow-card);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(201, 168, 76, 0.4);
+    }
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--gold-400), var(--turq-400));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .feature-card:hover::before {
+      opacity: 1;
+    }
+    .feature-card-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(201, 168, 76, 0.15), rgba(27, 138, 128, 0.15));
+      display: grid;
+      place-items: center;
+      font-size: 1.75rem;
+      margin-bottom: 20px;
+    }
+    .feature-card h3 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--navy-900);
+      margin-bottom: 10px;
+    }
+    .feature-card p {
+      font-size: 0.94rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* خطوات التثبيت في 4 خطوات */
+    .steps-section {
+      background: var(--surface-white);
+      border-radius: var(--radius-lg);
+      padding: 42px 36px;
+      border: 1px solid var(--border-gold);
+      box-shadow: var(--shadow-card);
+      margin-bottom: 60px;
+    }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      margin-top: 32px;
+    }
+    .step-box {
+      background: var(--papyrus);
+      border-radius: var(--radius-md);
+      padding: 24px 20px;
+      text-align: center;
+      border: 1px solid #E6DFD2;
+      transition: all 0.25s ease;
+    }
+    .step-box:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold-500);
+      background: #FFFDF9;
+    }
+    .step-badge-num {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--navy-900);
+      color: var(--gold-300);
+      font-weight: 900;
+      font-size: 1.15rem;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 14px;
+      box-shadow: 0 4px 12px rgba(10, 24, 40, 0.2);
+    }
+    .step-box h4 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--navy-900);
+      margin-bottom: 8px;
+    }
+    .step-box p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* بطاقة الأمان التوضيحية */
+    .security-banner {
+      margin-top: 26px;
+      background: #F3FAF6;
+      border: 1px solid #B8E4CC;
+      border-radius: var(--radius-md);
+      padding: 18px 22px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .security-banner-icon {
+      font-size: 1.7rem;
+      color: #27AE60;
+      flex-shrink: 0;
+    }
+    .security-banner-text h5 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #1A693F;
+      margin-bottom: 4px;
+    }
+    .security-banner-text p {
+      font-size: 0.9rem;
+      color: #26774D;
+      line-height: 1.65;
+    }
+
+    /* الأسئلة الشائعة (Accordion) */
+    .faq-section {
+      margin-bottom: 60px;
+    }
+    .faq-list {
+      max-width: 820px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .faq-item {
+      background: var(--surface-white);
+      border-radius: var(--radius-md);
+      border: 1px solid #E6DEC $\rightarrow$ #E6DEC;
+      border: 1px solid #E2D9C8;
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      transition: border-color 0.2s;
+    }
+    .faq-item.active {
+      border-color: var(--gold-500);
+    }
+    .faq-question {
+      padding: 18px 24px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--navy-900);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+    }
+    .faq-arrow {
+      font-size: 1.2rem;
+      color: var(--gold-500);
+      transition: transform 0.3s ease;
+    }
+    .faq-item.active .faq-arrow {
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      background: #FAF7F2;
+      color: var(--text-muted);
+      font-size: 0.93rem;
+      line-height: 1.75;
+      padding: 0 24px;
+    }
+    .faq-item.active .faq-answer {
+      max-height: 200px;
+      padding: 14px 24px 20px;
+      border-top: 1px solid #EDE5D8;
+    }
+
+    /* بطاقة الـ QR والتواصل المباشر */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--navy-900), var(--navy-800));
+      color: #FFFFFF;
+      border-radius: var(--radius-lg);
+      padding: 44px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 36px;
+      align-items: center;
+      border: 2px solid var(--gold-500);
+      box-shadow: 0 20px 50px rgba(7, 19, 32, 0.4);
+      margin-bottom: 60px;
+    }
+    .cta-info h3 {
+      font-size: 1.85rem;
+      font-weight: 900;
+      color: var(--gold-300);
+      margin-bottom: 10px;
+    }
+    .cta-info p {
+      font-size: 1.02rem;
+      color: #C3D5E7;
+      line-height: 1.75;
+      margin-bottom: 26px;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .btn-whatsapp-direct {
+      background: #25D366;
+      color: #FFFFFF;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 24px;
+      border-radius: 50px;
+      font-size: 0.98rem;
+      font-weight: 800;
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+      transition: all 0.25s ease;
+    }
+    .btn-whatsapp-direct:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(37, 211, 102, 0.5);
+    }
+    .btn-call-direct {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #FFFFFF;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 24px;
+      border-radius: 50px;
+      font-size: 0.98rem;
+      font-weight: 800;
+      transition: all 0.25s ease;
+    }
+    .btn-call-direct:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+    .cta-qr-box {
+      background: #FFFFFF;
+      padding: 18px;
+      border-radius: var(--radius-md);
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      max-width: 220px;
+      margin: 0 auto;
+    }
+    .cta-qr-box img {
+      width: 170px;
+      height: 170px;
+      display: block;
+      margin-bottom: 10px;
+      border-radius: 8px;
+    }
+    .cta-qr-box span {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--navy-900);
+      font-weight: 800;
+    }
+
+    /* شريط التحميل العائم للموبايل */
+    .mobile-float-bar {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(7, 19, 32, 0.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-top: 1px solid var(--border-gold);
+      padding: 12px 18px;
+      z-index: 999;
+      box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.25);
+    }
+    .mobile-float-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .mobile-btn-download {
+      flex: 1;
+      background: linear-gradient(135deg, var(--turq-400), var(--turq-500));
+      color: #FFFFFF;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px;
+      border-radius: var(--radius-md);
+      font-weight: 800;
+      font-size: 0.98rem;
+    }
+    .mobile-btn-wa {
+      background: #25D366;
+      color: #FFFFFF;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    /* نافذة الـ Modal لرمز الـ QR */
+    .qr-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      place-items: center;
+      padding: 20px;
+    }
+    .qr-modal.active {
+      display: grid;
+    }
+    .qr-modal-card {
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      text-align: center;
+      max-width: 380px;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      position: relative;
+    }
+    .close-modal-btn {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: #F0EDE4;
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-weight: 900;
+      font-size: 1.1rem;
+      color: var(--navy-900);
+      cursor: pointer;
+    }
+    .qr-modal-card h3 {
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--navy-900);
+      margin-bottom: 8px;
+    }
+    .qr-modal-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    /* الفوتر */
+    footer {
+      background: var(--navy-900);
+      color: #8D9FAF;
+      padding: 45px 20px 35px;
+      border-top: 1px solid var(--border-gold);
+      text-align: center;
+      font-size: 0.92rem;
+    }
+    .footer-brand {
+      color: var(--gold-300);
+      font-weight: 900;
+      font-size: 1.25rem;
+      margin-bottom: 8px;
+    }
+    .footer-links-wrap {
+      display: flex;
+      justify-content: center;
+      gap: 22px;
+      margin: 18px 0;
+      flex-wrap: wrap;
+    }
+    .footer-links-wrap a {
+      color: #BACAD9;
+      transition: color 0.2s;
+    }
+    .footer-links-wrap a:hover {
+      color: var(--gold-300);
+    }
+
+    /* Toast التنبيه */
+    #toastMessage {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--navy-900);
+      color: #FFFFFF;
+      border: 1px solid var(--gold-500);
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-weight: 800;
+      font-size: 0.95rem;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
+      z-index: 2000;
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #toastMessage.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* استجابة الشاشات الصغيرة (Responsive) */
+    @media (max-width: 900px) {
+      .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-desc {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero-cta-group {
+        justify-content: center;
+      }
+      .specs-card {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .spec-node:nth-child(2) {
+        border-left: none;
+      }
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+      .steps-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .cta-banner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .cta-buttons {
+        justify-content: center;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+    @media (max-width: 540px) {
+      body {
+        padding-bottom: 80px;
+      }
+      .hero-title {
+        font-size: 2.15rem;
+      }
+      .specs-card {
+        grid-template-columns: 1fr;
+      }
+      .spec-node {
+        border-left: none;
+        border-bottom: 1px solid #EAE3D6;
+      }
+      .spec-node:last-child {
+        border-bottom: none;
+      }
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+      .btn-download-primary {
+        width: 100%;
+        justify-content: center;
+      }
+      .btn-share-trigger, .btn-qr-trigger {
+        width: 100%;
+        justify-content: center;
+      }
+      .mobile-float-bar {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- شريط الملاحة -->
+  <header class="topbar">
+    <div class="topbar-wrap">
+      <div class="brand-logo">
+        <img src="icon.png" alt="شعار تطبيق تاريخي">
+        <div class="brand-info">
+          <h1>تاريخي</h1>
+          <span>المركز التاريخي · أ. أحمد سليم</span>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#features" class="nav-link">المزايا</a>
+        <a href="#install" class="nav-link">طريقة التثبيت</a>
+        <a href="#faq" class="nav-link">الأسئلة الشائعة</a>
+        <a href="#contact" class="nav-link">تواصل معنا</a>
+      </nav>
+      <a href="app-release.apk" download="tarikhy-1.0.0.apk" class="nav-btn-action" onclick="handleDownloadClick(event)">
+        <span>⬇ تحميل APK</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- الهيرو الرئيسي -->
+  <section class="hero">
+    <div class="hero-container">
+      <div>
+        <div class="badge-official">
+          <span class="pulse-indicator"></span>
+          <span>الإصدار 1.0.0 الرسمي المعتمد</span>
+        </div>
+        <h1 class="hero-title">
+          منصتك التعليمية <span>المتكاملة في التاريخ</span> للثانوية العامة
+        </h1>
+        <p class="hero-desc">
+          صُمم تطبيق «تاريخي» لطلاب الأستاذ أحمد سليم للجمع بين متعة فهم التاريخ وأحدث التقنيات الذكية: بنك أسئلة شامل، امتحانات تفاعلية فورية، حضور وانصراف بالباركود، وبوابة مخصصة لمتابعة ولي الأمر.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="app-release.apk" download="tarikhy-1.0.0.apk" class="btn-download-primary" id="heroDownloadBtn" onclick="handleDownloadClick(event)">
+            <span class="btn-dl-icon">⬇</span>
+            <div>
+              <span>تحميل التطبيق الآن (APK)</span>
+              <small>الإصدار 1.0.0 · الحجم: 88.6 ميجابايت · أندرويد 6.0+</small>
+            </div>
+          </a>
+          <button class="btn-qr-trigger" onclick="openQrModal()">
+            <span>📱 مسح الـ QR</span>
+          </button>
+          <button class="btn-share-trigger" onclick="sharePageLink()">
+            <span>🔗 مشاركة</span>
+          </button>
+        </div>
+
+        <!-- صندوق مؤشر التنزيل التفاعلي -->
+        <div id="downloadProgressBox">
+          <div style="display:flex; justify-content:space-between; font-size:0.86rem; font-weight:800; color:#E0F5F2;">
+            <span>جاري بدء التنزيل...</span>
+            <span id="progressText">100%</span>
+          </div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="progressBarFill" style="width: 100%;"></div>
+          </div>
+          <p style="font-size:0.78rem; color:#B4E2DA; margin-top:6px;">
+            ✅ بدأ التنزيل على جهازك. افتح شريط الإشعارات لمتابعة اكتمال التحميل.
+          </p>
+        </div>
+      </div>
+
+      <!-- بطاقة الأستاذ أحمد سليم -->
+      <div class="hero-profile-card">
+        <div class="profile-avatar-frame">
+          <img src="ahmed-selim.png" alt="الأستاذ أحمد سليم">
+        </div>
+        <h3 class="profile-name">أ. أحمد سليم</h3>
+        <p class="profile-role">خبير ومدرس أول التاريخ للثانوية العامة · مؤسس المركز التاريخي</p>
+        <div class="profile-quote">
+          «الهدف ليس فقط حفظ التواريخ والأحداث، بل فهم حركة التاريخ وصناعة عقل قادر على قراءة وتحليل نواتج التعلم لامتحانات الثانوية العامة الجديدة.»
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- المحتوى الرئيسي -->
+  <main class="page-container">
+
+    <!-- شريط المواصفات -->
+    <div class="specs-card">
+      <div class="spec-node">
+        <div class="spec-badge-icon">📱</div>
+        <div class="spec-meta">
+          <h4>نظام التشغيل</h4>
+          <p>أندرويد 6.0 فما فوق</p>
+        </div>
+      </div>
+      <div class="spec-node">
+        <div class="spec-badge-icon">📦</div>
+        <div class="spec-meta">
+          <h4>الإصدار الرسمي</h4>
+          <p id="specVerLabel">1.0.0 (المعتمد)</p>
+        </div>
+      </div>
+      <div class="spec-node">
+        <div class="spec-badge-icon">💾</div>
+        <div class="spec-meta">
+          <h4>حجم الملف</h4>
+          <p>88.6 ميجابايت</p>
+        </div>
+      </div>
+      <div class="spec-node">
+        <div class="spec-badge-icon">🛡</div>
+        <div class="spec-meta">
+          <h4>الأمان والموثوقية</h4>
+          <p>موقع رقمياً 100%</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- قسم المزايا -->
+    <section id="features">
+      <div class="section-title-wrap">
+        <span class="section-pill">منظومة تعليمية متكاملة</span>
+        <h2>كل أدوات التفوق بين يديك في مكان واحد</h2>
+        <p>صُممت كل ميزة في التطبيق بعناية فائقة لخدمة الطالب وولي الأمر بأعلى كفاءة وسهولة.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-card-icon">📊</div>
+          <h3>امتحانات وتصحيح فوري</h3>
+          <p>امتحانات دورية وشهرية مطابقة لمواصفات الثانوية العامة، مع التصحيح التلقائي وتفسير الإجابات الصحيحة وإحصاءات دقيقة لدرجات الطالب.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card-icon">📲</div>
+          <h3>حضور ذكي بالباركود (QR)</h3>
+          <p>تسجيل الحضور في ثوانٍ معدودة عبر مسح كارت الطالب بالباركود، لمنع التزاحم ومزامنة الحضور فورياً مع المنظومة.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card-icon">👨‍👩‍👧‍👦</div>
+          <h3>بوابة خاصة لولي الأمر</h3>
+          <p>تطبيق ومتابعة شفافة لولي الأمر لمعرفة مواعيد الحصص، تقارير الحضور والغياب، والدرجات الفعلية للواجبات والامتحانات أولاً بأول.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card-icon">📚</div>
+          <h3>بنك أسئلة ذكي ومتجدد</h3>
+          <p>مئات الأسئلة المتدرجة وفق مستويات الفهم والتطبيق والتحليل لكل فصل من فصول المنهج مع مراجعات ليلة الامتحان.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card-icon">🔔</div>
+          <h3>تنبيهات وإشعارات فورية</h3>
+          <p>إشعارات مباشرة بهاتفك بمواعيد الحصص، نزول امتحانات جديدة، ومواعيد تسليم الواجبات، وتنبيهات الغياب فور حدوثها.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card-icon">⚡</div>
+          <h3>دعم العمل دون إنترنت (Offline)</h3>
+          <p>نظام كاش ذكي يحفظ إجابات الامتحان وسجل الحضور تلقائياً عند انقطاع الشبكة، ويعيد رفعها للسيرفر فور عودة الاتصال.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- خطوات التثبيت -->
+    <section class="steps-section" id="install">
+      <div class="section-title-wrap" style="margin-bottom: 24px;">
+        <span class="section-pill">دليل التثبيت السريع</span>
+        <h2>ثبّت التطبيق على هاتفك في 4 خطوات سهلة</h2>
+        <p>خطوات بسيطة وسريعة لتشغيل التطبيق والبدء مباشرة.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-box">
+          <div class="step-badge-num">1</div>
+          <h4>اضغط زر التحميل</h4>
+          <p>انقر على زر التحميل في الأعلى لحفظ ملف <code>app-release.apk</code> على هاتفك.</p>
+        </div>
+
+        <div class="step-box">
+          <div class="step-badge-num">2</div>
+          <h4>تأكيد التحميل</h4>
+          <p>إذا ظهر لك تنبيه «الملف قد يكون ضاراً»، اضغط <b>موافق / Download anyway</b> (تنبيه أمان عام للملفات خارج المتجر).</p>
+        </div>
+
+        <div class="step-box">
+          <div class="step-badge-num">3</div>
+          <h4>السماح بالتثبيت</h4>
+          <p>إذا طُلب منك، ادخل على <b>الإعدادات</b> وفعّل خيار <b>السماح من هذا المصدر</b> لمتصفحك لمرة واحدة فقط.</p>
+        </div>
+
+        <div class="step-box">
+          <div class="step-badge-num">4</div>
+          <h4>التثبيت وتسجيل الدخول</h4>
+          <p>اضغط <b>تثبيت</b> ثم افتح تطبيق «تاريخي» وسجّل دخولك بكود الطالب أو رقمك.</p>
+        </div>
+      </div>
+
+      <div class="security-banner">
+        <div class="security-banner-icon">🛡</div>
+        <div class="security-banner-text">
+          <h5>تطبيق رسمي معتمد وآمن 100%</h5>
+          <p>
+            تنبيه حماية نظام أندرويد هو تنبيه روتيني يظهر تلقائياً لأي تطبيق يتم تثبيته خارج متجر Google Play. تطبيق «تاريخي» تم تطويره وتوقيعه بمفاتيح برمجية رسمية معتمدة من المركز التاريخي، وهو آمن بالكامل وخالٍ من أي برمجيات ضارة.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- الأسئلة الشائعة -->
+    <section class="faq-section" id="faq">
+      <div class="section-title-wrap">
+        <span class="section-pill">إجابات استفساراتكم</span>
+        <h2>الأسئلة الأكثر شيوعاً</h2>
+        <p>إليك أهم الأسئلة التي قد تدور بذهنك بخصوص التطبيق والتثبيت.</p>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item active">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>هل التطبيق مجاني للطلاب؟</span>
+            <span class="faq-arrow">▼</span>
+          </div>
+          <div class="faq-answer">
+            نعم، تحميل واستخدام التطبيق متاح ومجاني لجميع طلاب المركز التاريخي المسجلين مع الأستاذ أحمد سليم.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>لماذا تظهر رسالة «قد يكون هذا الملف ضاراً»؟</span>
+            <span class="faq-arrow">▼</span>
+          </div>
+          <div class="faq-answer">
+            هذه رسالة تحذير قياسية يعرضها نظام أندرويد لأي تطبيق يتم تنزيله مباشرة عبر المتصفح (خارج متجر جوجل). الملف موقع رقمياً وآمن تماماً، ويمكنك الضغط على «موافق / تنزيل على أي حال» وأنت مطمئن.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>كيف يحصل ولي الأمر على حسابه؟</span>
+            <span class="faq-arrow">▼</span>
+          </div>
+          <div class="faq-answer">
+            يقوم ولي الأمر بتحميل التطبيق واختيار «ولي أمر» وتسجيل رقمه، ومن ثم ربط الحساب بكود الطالب الخاص بابنه للاطلاع التلقائي على الدرجات والحضور.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>ماذا يحدث إذا انقطع الإنترنت أثناء الامتحان؟</span>
+            <span class="faq-arrow">▼</span>
+          </div>
+          <div class="faq-answer">
+            التطبيق مزود بتقنية كاش غير متصل (Offline Cache) تقوم بحفظ إجاباتك محلياً بشكل آمن، وبمجرد عودة الاتصال يتم إرسال الامتحان تلقائياً لقاعدة البيانات دون فقدان أي إجابة.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- بانر الـ QR والتواصل -->
+    <section class="cta-banner" id="contact">
+      <div class="cta-info">
+        <h3>هل لديك أي استفسار أو واجهت مشكلة؟</h3>
+        <p>
+          فريق الدعم الفني وإدارة المركز التاريخي والأستاذ أحمد سليم جاهزون لمساعدتك خطوة بخطوة طوال أيام الأسبوع.
+        </p>
+        <div class="cta-buttons">
+          <a href="https://wa.me/201004293926?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%A3%D8%B3%D8%AA%D8%A7%D8%B0%20%D8%A3%D8%AD%D9%85%D8%AF%D8%8C%20%D8%A3%D9%88%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%A8%D8%AE%D8%B5%D9%88%D8%B5%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE%D9%8A" target="_blank" rel="noopener" class="btn-whatsapp-direct">
+            <span>💬 محادثة واتساب فورية</span>
+          </a>
+          <a href="tel:01004293926" class="btn-call-direct">
+            <span>📞 01004293926</span>
+          </a>
+        </div>
+      </div>
+      <div class="cta-qr-box">
+        <img id="pageQrCode" src="https://api.qrserver.com/v1/create-qr-code/?data=https://drahmedselim2040.github.io/tarikhy-download/&size=170x170" alt="رمز QR للتحميل المباشر">
+        <span>امسح بكاميرا الهاتف للتحميل</span>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- شريط التحميل العائم للموبايل -->
+  <div class="mobile-float-bar">
+    <div class="mobile-float-content">
+      <a href="app-release.apk" download="tarikhy-1.0.0.apk" class="mobile-btn-download" onclick="handleDownloadClick(event)">
+        <span>⬇ تحميل التطبيق (88.6 MB)</span>
+      </a>
+      <a href="https://wa.me/201004293926" target="_blank" rel="noopener" class="mobile-btn-wa" title="واتساب">
+        💬
+      </a>
+    </div>
+  </div>
+
+  <!-- نافذة الـ Modal لمسح الـ QR -->
+  <div class="qr-modal" id="qrModal">
+    <div class="qr-modal-card">
+      <button class="close-modal-btn" onclick="closeQrModal()">✕</button>
+      <h3>امسح الرمز بكاميرا هاتفك</h3>
+      <p>وجّه كاميرا الهاتف نحو الرمز لفتح صفحة التحميل وتنزيل التطبيق مباشرة.</p>
+      <img id="modalQrImg" src="https://api.qrserver.com/v1/create-qr-code/?data=https://drahmedselim2040.github.io/tarikhy-download/&size=200x200" alt="QR Code" style="width:200px; height:200px; border-radius:12px; margin-bottom:16px;">
+      <button class="btn-share-trigger" style="width:100%; justify-content:center;" onclick="sharePageLink()">
+        <span>🔗 نسخ رابط الصفحة</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- الفوتر -->
+  <footer>
+    <div class="footer-brand">المركز التاريخي · أ. أحمد سليم</div>
+    <p>محافظة الغربية — مصر · هاتف: 01004293926 · بريد: ahmedselim1a@gmail.com</p>
+    <div class="footer-links-wrap">
+      <a href="https://wa.me/201004293926" target="_blank" rel="noopener">واتساب الدعم</a>
+      <span>·</span>
+      <a href="#install">طريقة التثبيت</a>
+      <span>·</span>
+      <a href="#faq">الأسئلة الشائعة</a>
+      <span>·</span>
+      <a href="app-release.apk" download="tarikhy-1.0.0.apk">تحميل APK</a>
+    </div>
+    <p style="margin-top: 14px; font-size: 0.82rem; color: #566D82;">
+      جميع الحقوق محفوظة © 2026 تطبيق تاريخي.
+    </p>
+  </footer>
+
+  <!-- إشعار Toast -->
+  <div id="toastMessage">✅ تم نسخ الرابط بنجاح!</div>
+
+  <script>
+    // تحديث رابط الـ QR بالرابط الفعلي الحالي
+    document.addEventListener('DOMContentLoaded', () => {
+      const url = window.location.href;
+      if (url.startsWith('http')) {
+        const qrApi = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(url)}&size=180x180`;
+        const qr1 = document.getElementById('pageQrCode');
+        const qr2 = document.getElementById('modalQrImg');
+        if (qr1) qr1.src = qrApi;
+        if (qr2) qr2.src = qrApi;
+      }
+
+      // جلب بيانات version.json إذا توفر
+      fetch('version.json')
+        .then(r => r.json())
+        .then(d => {
+          if (d && d.version) {
+            const el = document.getElementById('specVerLabel');
+            if (el) el.textContent = `${d.version} (المعتمد)`;
+          }
+        })
+        .catch(() => {});
+    });
+
+    // أكورديون الأسئلة الشائعة
+    function toggleFaq(el) {
+      const item = el.parentElement;
+      const isActive = item.classList.contains('active');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+      if (!isActive) {
+        item.classList.add('active');
+      }
+    }
+
+    // تفاعل زر التنزيل
+    function handleDownloadClick(e) {
+      const box = document.getElementById('downloadProgressBox');
+      if (box) {
+        box.style.display = 'block';
+        showToast('🚀 بدأ تنزيل ملف التطبيق، راجع شريط الإشعارات بهاتفك!');
+      }
+    }
+
+    // نسخ ومشاركة الرابط
+    function sharePageLink() {
+      const url = window.location.href;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(url).then(() => showToast('✅ تم نسخ رابط التحميل بنجاح!'));
+      } else {
+        const temp = document.createElement('input');
+        temp.value = url;
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand('copy');
+        document.body.removeChild(temp);
+        showToast('✅ تم نسخ رابط التحميل بنجاح!');
+      }
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toastMessage');
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2800);
+    }
+
+    // مودال الـ QR
+    function openQrModal() {
+      document.getElementById('qrModal').classList.add('active');
+    }
+    function closeQrModal() {
+      document.getElementById('qrModal').classList.remove('active');
+    }
+  </script>
+</body>
+</html>

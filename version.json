@@ -1,0 +1,9 @@
+{
+  "app": "tarikhy",
+  "version": "1.0.0",
+  "min_supported": "1.0.0",
+  "apk": "app-release.apk",
+  "page": "index.html",
+  "notes": "أول إصدار رسمي — كل المزايا التعليمية كاملة",
+  "updated_at": "2026-09-02"
+}
