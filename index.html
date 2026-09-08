@@ -971,7 +971,7 @@
         <a href="#faq" class="nav-link">الأسئلة الشائعة</a>
         <a href="#contact" class="nav-link">تواصل معنا</a>
       </nav>
-      <a href="https://github.com/drahmedselim2040/tarikhy-download/releases/latest/download/app-release.apk" download="tarikhy-1.0.10.apk" class="nav-btn-action" onclick="handleDownloadClick(event)">
+      <a href="https://github.com/drahmedselim2040/tarikhy-download/releases/latest/download/app-release.apk" download="tarikhy-1.0.11.apk" class="nav-btn-action" onclick="handleDownloadClick(event)">
         <span>⬇ تحميل APK</span>
       </a>
     </div>
@@ -983,7 +983,7 @@
       <div>
         <div class="badge-official">
           <span class="pulse-indicator"></span>
-          <span>الإصدار 1.0.10 الرسمي المعتمد</span>
+          <span id="heroVerBadge">الإصدار 1.0.11 الرسمي المعتمد</span>
         </div>
         <h1 class="hero-title">
           منصتك التعليمية <span>المتكاملة في التاريخ</span> للثانوية العامة
@@ -993,11 +993,11 @@
         </p>
 
         <div class="hero-cta-group">
-          <a href="https://github.com/drahmedselim2040/tarikhy-download/releases/latest/download/app-release.apk" download="tarikhy-1.0.10.apk" class="btn-download-primary" id="heroDownloadBtn" onclick="handleDownloadClick(event)">
+          <a href="https://github.com/drahmedselim2040/tarikhy-download/releases/latest/download/app-release.apk" download="tarikhy-1.0.11.apk" class="btn-download-primary" id="heroDownloadBtn" onclick="handleDownloadClick(event)">
             <span class="btn-dl-icon">⬇</span>
             <div>
               <span>تحميل التطبيق الآن (APK)</span>
-              <small>الإصدار 1.0.10 · أندرويد 6.0+</small>
+              <small id="heroVerSmall">الإصدار 1.0.11 · أندرويد 6.0+</small>
             </div>
           </a>
           <button class="btn-qr-trigger" onclick="openQrModal()">
@@ -1053,14 +1053,14 @@
         <div class="spec-badge-icon">📦</div>
         <div class="spec-meta">
           <h4>الإصدار الرسمي</h4>
-          <p id="specVerLabel">1.0.10 (المعتمد)</p>
+          <p id="specVerLabel">1.0.11 (المعتمد)</p>
         </div>
       </div>
       <div class="spec-node">
         <div class="spec-badge-icon">💾</div>
         <div class="spec-meta">
           <h4>حجم الملف</h4>
-          <p>146.5 ميجابايت</p>
+          <p>95.0 ميجابايت</p>
         </div>
       </div>
       <div class="spec-node">
@@ -1242,7 +1242,7 @@
   <!-- شريط التحميل العائم للموبايل -->
   <div class="mobile-float-bar">
     <div class="mobile-float-content">
-      <a href="https://github.com/drahmedselim2040/tarikhy-download/releases/latest/download/app-release.apk" download="tarikhy-1.0.10.apk" class="mobile-btn-download" onclick="handleDownloadClick(event)">
+      <a href="https://github.com/drahmedselim2040/tarikhy-download/releases/latest/download/app-release.apk" download="tarikhy-1.0.11.apk" class="mobile-btn-download" onclick="handleDownloadClick(event)">
         <span>⬇ تحميل التطبيق</span>
       </a>
       <a href="https://wa.me/201004293926" target="_blank" rel="noopener" class="mobile-btn-wa" title="واتساب">
@@ -1304,6 +1304,10 @@
           if (d && d.version) {
             const el = document.getElementById('specVerLabel');
             if (el) el.textContent = `${d.version} (المعتمد)`;
+            const badge = document.getElementById('heroVerBadge');
+            if (badge) badge.textContent = `الإصدار ${d.version} الرسمي المعتمد`;
+            const small = document.getElementById('heroVerSmall');
+            if (small) small.textContent = `الإصدار ${d.version} · أندرويد 6.0+`;
           }
         })
         .catch(() => {});
