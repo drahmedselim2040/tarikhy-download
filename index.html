@@ -310,6 +310,31 @@
       z-index: 10;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     }
+    .teacher-card.arabic-teacher {
+      border: 1.5px solid rgba(229, 184, 66, 0.5);
+      background: linear-gradient(180deg, rgba(20, 36, 56, 0.85) 0%, rgba(7, 14, 24, 0.98) 100%);
+    }
+    .teacher-card.arabic-teacher::before {
+      content: '📜 أسطورة اللغة العربية';
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: linear-gradient(135deg, var(--gold-400), #A88118);
+      color: #040A14;
+      font-size: 0.82rem;
+      font-weight: 900;
+      padding: 6px 14px;
+      border-radius: 50px;
+      z-index: 10;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    }
+    .arabic-teacher .teacher-card-role {
+      color: var(--gold-300);
+    }
+    .arabic-teacher .teacher-card-checklist li span {
+      background: rgba(229, 184, 66, 0.2);
+      color: var(--gold-400);
+    }
     .teacher-img-wrap {
       width: 100%;
       height: 440px;
@@ -434,13 +459,22 @@
       transform: translateY(-2px);
       box-shadow: 0 8px 25px rgba(0, 210, 255, 0.5);
     }
+    .btn-teacher-arabic {
+      background: linear-gradient(135deg, var(--gold-400), #A88118);
+      color: #040D1A;
+      box-shadow: 0 4px 18px var(--gold-glow);
+    }
+    .btn-teacher-arabic:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+    }
 
     /* ==============================================================
        APPS SHOWCASE GRID (Inspired by Image 2 & Image 3)
        ============================================================== */
     .apps-vip-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
       gap: 28px;
       margin-bottom: 40px;
       position: relative;
@@ -478,6 +512,27 @@
     .vip-card-fizyai:hover {
       transform: translateY(-6px);
       box-shadow: 0 22px 60px rgba(0, 210, 255, 0.3);
+    }
+
+    /* Card 3: Oustoura (Imperial Gold & Obsidian Navy) */
+    .vip-card-oustoura {
+      border: 1.5px solid rgba(229, 184, 66, 0.7);
+      box-shadow: 0 15px 45px rgba(229, 184, 66, 0.18), 0 0 0 1px rgba(229, 184, 66, 0.15);
+    }
+    .vip-card-oustoura:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 22px 60px rgba(229, 184, 66, 0.35);
+    }
+    .vip-card-oustoura .vip-teacher-title {
+      background: linear-gradient(135deg, #FFFFFF 0%, var(--gold-300) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .vip-card-oustoura .vip-subject-role {
+      color: #E5B842;
+    }
+    .vip-card-oustoura .vip-avatar-wrap {
+      background: linear-gradient(135deg, var(--gold-400), #A88118);
     }
 
     /* Card Top Status Bar */
@@ -576,6 +631,11 @@
       box-shadow: 0 0 25px var(--turq-glow);
       border-radius: 50%;
     }
+    .vip-card-oustoura .vip-avatar-wrap {
+      background: linear-gradient(135deg, var(--gold-400), #A88118);
+      box-shadow: 0 0 25px rgba(229, 184, 66, 0.4);
+      border-radius: 50%;
+    }
     .vip-avatar-wrap img {
       width: 100%;
       height: 100%;
@@ -584,7 +644,8 @@
       display: block;
       background: var(--navy-900);
     }
-    .vip-card-fizyai .vip-avatar-wrap img {
+    .vip-card-fizyai .vip-avatar-wrap img,
+    .vip-card-oustoura .vip-avatar-wrap img {
       border-radius: 50%;
     }
 
@@ -623,6 +684,10 @@
     .vip-card-fizyai .feature-pill-badge:hover {
       border-color: var(--turq-500);
       background: rgba(0, 210, 255, 0.1);
+    }
+    .vip-card-oustoura .feature-pill-badge:hover {
+      border-color: #E5B842;
+      background: rgba(229, 184, 66, 0.1);
     }
 
     /* Action Bar (Download + Icon Buttons) */
@@ -688,6 +753,16 @@
       transform: translateY(-2px);
       box-shadow: 0 10px 30px rgba(0, 210, 255, 0.5);
       background: linear-gradient(135deg, #38BDF8, #0096C7);
+    }
+    .btn-vip-oustoura {
+      background: linear-gradient(135deg, #E5B842, #A88118);
+      color: #040A14;
+      box-shadow: 0 6px 22px rgba(229, 184, 66, 0.35);
+    }
+    .btn-vip-oustoura:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(229, 184, 66, 0.55);
+      background: linear-gradient(135deg, #F3CF65, #C9A84C);
     }
 
     /* ==============================================================
@@ -1338,6 +1413,31 @@
             </a>
           </div>
         </article>
+
+        <!-- 3. Ahmed Bedda (Arabic - Al Oustoura) -->
+        <article class="teacher-card arabic-teacher" id="teacherAhmedBedda">
+          <div class="teacher-img-wrap">
+            <img src="ahmed-bedda.png" alt="الأستاذ أحمد بده - أسطورة اللغة العربية للثانوية العامة">
+            <div class="teacher-gradient-overlay"></div>
+          </div>
+          <div class="teacher-card-body">
+            <span class="teacher-card-role">خبير مادة اللغة العربية للثانوية العامة</span>
+            <h4 class="teacher-card-name">الأستاذ أحمد بده</h4>
+            <p class="teacher-card-bio">
+              أسطورة اللغة العربية للثانوية العامة وصانع أوائل الجمهورية، المتميز بتبسيط وتفكيك أصعب قواعد النحو والصرف، وتدريب الطلاب على البلاغة والأدب والنصوص المتحررة بأسلوب فريد.
+            </p>
+            <ul class="teacher-card-checklist">
+              <li><span>✓</span> بنك أسئلة النحو والصرف والبلاغة الوزارية الشاملة</li>
+              <li><span>✓</span> تصحيح مقالي بالذكاء الاصطناعي وإرشادات تفصيلية</li>
+              <li><span>✓</span> اختبارات دورية مؤمّنة ضد الغش ومتابعة مستمرة</li>
+              <li><span>✓</span> كروت حضور سنوية دائمة بالباركود وتقارير فورية لولي الأمر</li>
+            </ul>
+            <a href="#cardOustoura" class="btn-teacher-card btn-teacher-arabic" id="btnScrollOustoura">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span>تحميل تطبيق الأسطورة (APK)</span>
+            </a>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -1443,6 +1543,53 @@
           </a>
           <a href="https://github.com/drahmedselim2040/tarikhy-download/releases/download/v1.0.12/physics-release.apk" download="fizyai-1.0.0.apk" class="btn-vip-download btn-vip-cyan" id="btnDownloadFizyai">
             <span>↓ تحميل تطبيق فيزيائي</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- 3. AL OUSTOURA APP CARD (Mr. Ahmed Bedda - Arabic) -->
+      <article class="vip-card vip-card-oustoura" id="cardOustoura">
+        <div class="vip-card-status-bar">
+          <span class="badge-status badge-status-green">
+            <span>متاح الآن للتحميل (v1.0.0)</span>
+            <span>✅</span>
+          </span>
+        </div>
+
+        <div class="vip-profile-header">
+          <div class="vip-profile-info">
+            <h3 class="vip-teacher-title">تطبيق الأسطورة</h3>
+            <p class="vip-subject-role">دليلك في اللغة العربية للثانوية العامة</p>
+            <div class="vip-app-pill">
+              <span>📖</span>
+              <span>إشراف: أ. أحمد بده</span>
+            </div>
+          </div>
+          <div class="vip-avatar-wrap">
+            <img src="oustoura-badge.png" alt="شعار تطبيق الأسطورة الرسمي - أ. أحمد بده">
+          </div>
+        </div>
+
+        <p class="vip-bio-text">
+          المنصة الرقمية المتخصصة في اللغة العربية — تبسيط شامل للنحو والبلاغة والأدب، بنك أسئلة وزاري عملاق، تصحيح مقالي بالذكاء الاصطناعي، وامتحانات دورية ذكية مع متابعة ولي الأمر.
+        </p>
+
+        <div class="vip-pills-row">
+          <span class="feature-pill-badge"><span>📜</span> نحو وصرف وبلاغة</span>
+          <span class="feature-pill-badge"><span>🤖</span> تصحيح مقالي بالذكاء الاصطناعي</span>
+          <span class="feature-pill-badge"><span>📲</span> حضور بالباركود QR</span>
+          <span class="feature-pill-badge"><span>🛡️</span> حماية مشددة للامتحانات</span>
+        </div>
+
+        <div class="vip-actions-bar">
+          <a href="https://wa.me/201004318036?text=مرحباً،%20أريد%20الاستفسار%20عن%20تطبيق%20الأسطورة" target="_blank" class="icon-action-btn wa-btn" title="تواصل واتساب">
+            💬
+          </a>
+          <a href="tel:01004318036" class="icon-action-btn" title="اتصال هاتفي">
+            📱
+          </a>
+          <a href="https://github.com/drahmedselim2040/tarikhy-download/releases/download/v1.0.12/arabic-release.apk" download="oustoura-1.0.0.apk" class="btn-vip-download btn-vip-oustoura" id="btnDownloadOustoura">
+            <span>↓ تحميل تطبيق الأسطورة</span>
           </a>
         </div>
       </article>
