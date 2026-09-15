@@ -4,32 +4,35 @@
   "tarikhy": {
     "name": "تطبيق تاريخي",
     "teacher": "د. أحمد سليم (مؤسس المنصة وخبير التاريخ الوطني)",
-    "version": "1.0.12",
+    "version": "1.0.13",
     "min_supported": "1.0.0",
     "apk": "app-release.apk",
-    "size": "95.3 MB",
-    "updated_at": "2026-09-11",
-    "notes": "إصدار 1.0.12: ميزة التحصيل السريع المدمج مع الحضور، إشعار حضور ولي الأمر اللحظي، تكبير صور الخرائط والأسئلة، ومنع تقسيم الشاشة وحظر لقطات الشاشة."
+    "download_url": "https://github.com/drahmedselim2040/tarikhy-download/releases/download/v1.0.13/app-release.apk",
+    "size": "95.5 MB",
+    "updated_at": "2026-09-15",
+    "notes": "إصدار 1.0.13: نظام استرداد المدفوعات وتصدير كشوف حساب المجموعات"
   },
   "physics": {
     "name": "تطبيق فيزيائي",
     "teacher": "الأستاذ مصطفى الحويري (أستاذ الفيزياء)",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "available",
     "apk": "physics-release.apk",
-    "size": "95.3 MB",
-    "updated_at": "2026-09-11",
-    "notes": "الإصدار الأول 1.0.0: بنك أسئلة وفيزياء حديثة وكهربية، امتحانات إلكترونية ذكية، منظومة حضور بالباركود، وتتبع مستوى الطالب."
+    "download_url": "https://github.com/drahmedselim2040/tarikhy-download/releases/download/fizyai-v1.0.1/physics-release.apk",
+    "size": "95.5 MB",
+    "updated_at": "2026-09-15",
+    "notes": "إصدار 1.0.1: نظام استرداد المدفوعات وتصدير كشوف حساب المجموعات"
   },
   "arabic": {
     "name": "تطبيق الأسطورة",
     "subject": "اللغة العربية",
     "teacher": "الأستاذ أحمد بده (أسطورة اللغة العربية للثانوية العامة)",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "available",
     "apk": "arabic-release.apk",
+    "download_url": "https://github.com/drahmedselim2040/tarikhy-download/releases/download/oustoura-v1.0.1/arabic-release.apk",
     "size": "96.1 MB",
-    "updated_at": "2026-09-14",
-    "notes": "الإصدار الأول 1.0.0: بنك أسئلة النحو والبلاغة والأدب، امتحانات ذكية وتصحيح المقالي بالذكاء الاصطناعي، باركود دائم سنوي للطلاب، وبوابة المتابعة."
+    "updated_at": "2026-09-15",
+    "notes": "إصدار 1.0.1: نظام استرداد المدفوعات وتصدير كشوف حساب المجموعات"
   }
 }
