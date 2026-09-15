@@ -1443,9 +1443,293 @@
         height: 360px;
       }
     }
+  
+    /* ==============================================================
+       LUXURY DOWNLOAD ICONS & DISTINCT TEACHER COLORS (Master Design)
+       ============================================================== */
+    .btn-icon-bubble {
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+      transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .btn-icon-bubble::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 100%);
+      border-radius: 50% 50% 100% 100% / 100% 100% 0% 0%;
+      pointer-events: none;
+    }
+
+    /* Bubble Color 1: Royal Pharaonic Gold (Dr. Ahmed Selim - Tarikhy) */
+    .bubble-gold {
+      background: radial-gradient(circle at 35% 30%, #3D2605 0%, #180F02 75%, #050401 100%);
+      border: 2px solid #F59E0B;
+      box-shadow: 
+        0 0 16px rgba(245, 158, 11, 0.6),
+        inset 0 1px 2px rgba(255, 255, 255, 0.45),
+        inset 0 -1px 2px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Bubble Color 2: Electric Quantum Cyan (Mr. Mostafa El Howairy - Fizyai) */
+    .bubble-cyan {
+      background: radial-gradient(circle at 35% 30%, #083344 0%, #031E2C 75%, #010E17 100%);
+      border: 2px solid #22D3EE;
+      box-shadow: 
+        0 0 16px rgba(6, 182, 212, 0.65),
+        inset 0 1px 2px rgba(255, 255, 255, 0.45),
+        inset 0 -1px 2px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Bubble Color 3: Imperial Royal Purple (Mr. Ahmed Bedda - Al Oustoura) */
+    .bubble-purple {
+      background: radial-gradient(circle at 35% 30%, #3B1363 0%, #20083B 75%, #0D021A 100%);
+      border: 2px solid #C084FC;
+      box-shadow: 
+        0 0 16px rgba(168, 85, 247, 0.65),
+        inset 0 1px 2px rgba(255, 255, 255, 0.45),
+        inset 0 -1px 2px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Topbar download icon badge */
+    .nav-btn-icon-wrap {
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 35% 30%, rgba(245, 158, 11, 0.35) 0%, #08172E 80%);
+      border: 1.8px solid #F59E0B;
+      box-shadow: 0 0 14px rgba(245, 158, 11, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.4);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    .nav-btn-icon-wrap::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 100%);
+      pointer-events: none;
+    }
+
+    /* SVG Vector Styles */
+    .dl-svg {
+      display: block;
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
+      transition: transform 0.3s ease;
+    }
+
+    /* Micro-animation: Downward gliding arrow on hover */
+    @keyframes dlArrowGlide {
+      0% {
+        transform: translateY(-2px);
+        opacity: 0.85;
+      }
+      50% {
+        transform: translateY(2.5px);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-2px);
+        opacity: 0.85;
+      }
+    }
+    .btn-teacher-card:hover .dl-arrow-group,
+    .btn-vip-download:hover .dl-arrow-group,
+    .nav-btn-action:hover .dl-arrow-group {
+      animation: dlArrowGlide 0.85s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+    }
+
+    .btn-teacher-card:hover .btn-icon-bubble,
+    .btn-vip-download:hover .btn-icon-bubble,
+    .nav-btn-action:hover .nav-btn-icon-wrap {
+      transform: scale(1.1);
+    }
+    .btn-teacher-primary:hover .bubble-gold,
+    .btn-vip-gold:hover .bubble-gold,
+    .nav-btn-action:hover .nav-btn-icon-wrap {
+      box-shadow: 0 0 22px rgba(245, 158, 11, 0.9), inset 0 1px 3px #FFFFFF;
+    }
+    .btn-teacher-physics:hover .bubble-cyan,
+    .btn-vip-cyan:hover .bubble-cyan {
+      box-shadow: 0 0 22px rgba(6, 182, 212, 0.95), inset 0 1px 3px #FFFFFF;
+    }
+    .btn-teacher-arabic:hover .bubble-purple,
+    .btn-vip-oustoura:hover .bubble-purple {
+      box-shadow: 0 0 22px rgba(168, 85, 247, 0.95), inset 0 1px 3px #FFFFFF;
+    }
+
+    /* Teacher Cards Checklist bullets distinct colors */
+    .arabic-teacher .teacher-card-checklist li span {
+      background: rgba(168, 85, 247, 0.2);
+      color: #C084FC;
+    }
+    .arabic-teacher {
+      border-color: rgba(168, 85, 247, 0.4);
+    }
+    .arabic-teacher:hover {
+      border-color: rgba(168, 85, 247, 0.8);
+      box-shadow: 0 20px 45px rgba(168, 85, 247, 0.25);
+    }
+    .arabic-teacher .teacher-card-role {
+      color: #C084FC;
+    }
+
+    /* Buttons: Distinct Teacher 1 (Gold) */
+    .btn-teacher-primary {
+      background: linear-gradient(135deg, #F59E0B 0%, #D97706 50%, #92400E 100%);
+      color: #060E1A;
+      font-weight: 900;
+      border: 1px solid rgba(254, 240, 138, 0.4);
+      box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+    }
+    .btn-teacher-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(245, 158, 11, 0.6);
+      background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%);
+    }
+
+    /* Buttons: Distinct Teacher 2 (Cyan) */
+    .btn-teacher-physics {
+      background: linear-gradient(135deg, #06B6D4 0%, #0284C7 50%, #0369A1 100%);
+      color: #FFFFFF;
+      font-weight: 900;
+      border: 1px solid rgba(165, 243, 252, 0.4);
+      box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
+    }
+    .btn-teacher-physics:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(6, 182, 212, 0.65);
+      background: linear-gradient(135deg, #22D3EE 0%, #0EA5E9 100%);
+    }
+
+    /* Buttons: Distinct Teacher 3 (Purple) */
+    .btn-teacher-arabic {
+      background: linear-gradient(135deg, #A855F7 0%, #7C3AED 50%, #581C87 100%);
+      color: #FFFFFF;
+      font-weight: 900;
+      border: 1px solid rgba(233, 213, 255, 0.4);
+      box-shadow: 0 6px 20px rgba(168, 85, 247, 0.45);
+    }
+    .btn-teacher-arabic:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(168, 85, 247, 0.7);
+      background: linear-gradient(135deg, #C084FC 0%, #8B5CF6 100%);
+    }
+
+    /* VIP Download Buttons */
+    .btn-vip-gold {
+      background: linear-gradient(135deg, #F59E0B 0%, #D97706 50%, #92400E 100%);
+      color: #060E1A;
+      font-weight: 900;
+      border: 1px solid rgba(254, 240, 138, 0.4);
+      box-shadow: 0 6px 22px rgba(245, 158, 11, 0.45);
+    }
+    .btn-vip-gold:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(245, 158, 11, 0.65);
+      background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%);
+    }
+
+    .btn-vip-cyan {
+      background: linear-gradient(135deg, #06B6D4 0%, #0284C7 50%, #0369A1 100%);
+      color: #FFFFFF;
+      font-weight: 900;
+      border: 1px solid rgba(165, 243, 252, 0.4);
+      box-shadow: 0 6px 22px rgba(6, 182, 212, 0.45);
+    }
+    .btn-vip-cyan:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(6, 182, 212, 0.7);
+      background: linear-gradient(135deg, #22D3EE 0%, #0EA5E9 100%);
+    }
+
+    .btn-vip-oustoura {
+      background: linear-gradient(135deg, #A855F7 0%, #7C3AED 50%, #581C87 100%);
+      color: #FFFFFF;
+      font-weight: 900;
+      border: 1px solid rgba(233, 213, 255, 0.4);
+      box-shadow: 0 6px 22px rgba(168, 85, 247, 0.45);
+    }
+    .btn-vip-oustoura:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(168, 85, 247, 0.7);
+      background: linear-gradient(135deg, #C084FC 0%, #8B5CF6 100%);
+    }
+
+    /* VIP Card Oustoura: Pure Imperial Purple Identity */
+    .vip-card-oustoura {
+      border: 1.5px solid rgba(168, 85, 247, 0.65);
+      box-shadow: 0 15px 45px rgba(168, 85, 247, 0.18), 0 0 0 1px rgba(168, 85, 247, 0.15);
+    }
+    .vip-card-oustoura:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 22px 60px rgba(168, 85, 247, 0.35);
+    }
+    .vip-card-oustoura .vip-teacher-title {
+      background: linear-gradient(135deg, #FFFFFF 0%, #E9D5FF 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .vip-card-oustoura .vip-subject-role {
+      color: #C084FC;
+    }
+    .vip-card-oustoura .vip-avatar-wrap {
+      background: linear-gradient(135deg, #A855F7, #6B21A8);
+      box-shadow: 0 0 25px rgba(168, 85, 247, 0.45);
+      border-radius: 50%;
+    }
+    .vip-card-oustoura .feature-pill-badge:hover {
+      border-color: #C084FC;
+      background: rgba(168, 85, 247, 0.15);
+    }
+
   </style>
 </head>
 <body>
+  <!-- GLOBAL SVG GRADIENTS FOR BEAUTIFUL DOWNLOAD ICONS -->
+  <svg style="position: absolute; width: 0; height: 0; overflow: hidden; pointer-events: none;" aria-hidden="true">
+    <defs>
+      <!-- Gold Gradient for Tarikhy / Dr. Ahmed Selim -->
+      <linearGradient id="dlGradGold" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#FFFFFF" />
+        <stop offset="40%" stop-color="#FDE047" />
+        <stop offset="100%" stop-color="#D97706" />
+      </linearGradient>
+
+      <!-- Cyan Gradient for Fizyai / Mr. Mostafa El Howairy -->
+      <linearGradient id="dlGradCyan" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#FFFFFF" />
+        <stop offset="40%" stop-color="#67E8F9" />
+        <stop offset="100%" stop-color="#0284C7" />
+      </linearGradient>
+
+      <!-- Purple Gradient for Al-Oustoura / Mr. Ahmed Bedda -->
+      <linearGradient id="dlGradPurple" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#FFFFFF" />
+        <stop offset="40%" stop-color="#E9D5FF" />
+        <stop offset="100%" stop-color="#7C3AED" />
+      </linearGradient>
+    </defs>
+  </svg>
+
 
   <div class="ambient-glow"></div>
 
@@ -1469,11 +1753,13 @@
       </nav>
       <a href="#apps" class="nav-btn-action" id="headerDownloadBtn">
         <span class="nav-btn-icon-wrap">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-            <polyline points="7 10 12 15 17 10"></polyline>
-            <line x1="12" y1="15" x2="12" y2="3"></line>
-          </svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="dl-svg">
+                <g class="dl-arrow-group">
+                  <path d="M12 3v10m0 0l-4-4m4 4l4-4" stroke="url(#dlGradGold)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+                <path d="M4 17v1.5A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5V17" stroke="#F59E0B" stroke-width="2.2" stroke-linecap="round"/>
+                <circle cx="12" cy="18.5" r="1.1" fill="#FEF08A"/>
+              </svg>
         </span>
         <span>تحميل التطبيقات</span>
       </a>
@@ -1524,11 +1810,13 @@
             </ul>
             <a href="#cardTarikhy" class="btn-teacher-card btn-teacher-primary" id="btnScrollTarikhy">
               <span class="btn-icon-bubble bubble-gold">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                  <polyline points="7 10 12 15 17 10"></polyline>
-                  <line x1="12" y1="15" x2="12" y2="3"></line>
-                </svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="dl-svg">
+                <g class="dl-arrow-group">
+                  <path d="M12 3v10m0 0l-4-4m4 4l4-4" stroke="url(#dlGradGold)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+                <path d="M4 17v1.5A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5V17" stroke="#F59E0B" stroke-width="2.2" stroke-linecap="round"/>
+                <circle cx="12" cy="18.5" r="1.1" fill="#FEF08A"/>
+              </svg>
               </span>
               <span>تحميل تطبيق تاريخي (APK)</span>
             </a>
@@ -1555,11 +1843,13 @@
             </ul>
             <a href="#cardFizyai" class="btn-teacher-card btn-teacher-physics" id="btnScrollPhysics">
               <span class="btn-icon-bubble bubble-cyan">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                  <polyline points="7 10 12 15 17 10"></polyline>
-                  <line x1="12" y1="15" x2="12" y2="3"></line>
-                </svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="dl-svg">
+                <g class="dl-arrow-group">
+                  <path d="M12 3v10m0 0l-4-4m4 4l4-4" stroke="url(#dlGradCyan)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+                <path d="M4 17v1.5A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5V17" stroke="#06B6D4" stroke-width="2.2" stroke-linecap="round"/>
+                <circle cx="12" cy="18.5" r="1.1" fill="#A5F3FC"/>
+              </svg>
               </span>
               <span>تحميل تطبيق فيزيائي (APK)</span>
             </a>
@@ -1585,12 +1875,14 @@
               <li><span>✓</span> كروت حضور سنوية دائمة بالباركود وتقارير فورية لولي الأمر</li>
             </ul>
             <a href="#cardOustoura" class="btn-teacher-card btn-teacher-arabic" id="btnScrollOustoura">
-              <span class="btn-icon-bubble bubble-amber">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                  <polyline points="7 10 12 15 17 10"></polyline>
-                  <line x1="12" y1="15" x2="12" y2="3"></line>
-                </svg>
+              <span class="btn-icon-bubble bubble-purple">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="dl-svg">
+                <g class="dl-arrow-group">
+                  <path d="M12 3v10m0 0l-4-4m4 4l4-4" stroke="url(#dlGradPurple)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+                <path d="M4 17v1.5A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5V17" stroke="#C084FC" stroke-width="2.2" stroke-linecap="round"/>
+                <circle cx="12" cy="18.5" r="1.1" fill="#F3E8FF"/>
+              </svg>
               </span>
               <span>تحميل تطبيق الأسطورة (APK)</span>
             </a>
@@ -1615,7 +1907,7 @@
       <article class="vip-card vip-card-tarikhy" id="cardTarikhy">
         <div class="vip-card-status-bar">
           <span class="badge-status badge-status-green">
-            <span>متاح الآن للتحميل (v1.0.12)</span>
+            <span>متاح الآن للتحميل (v1.0.13)</span>
             <span>✅</span>
           </span>
         </div>
@@ -1654,12 +1946,14 @@
           </a>
           <a href="https://github.com/drahmedselim2040/tarikhy-download/releases/download/v1.0.13/app-release.apk" download="tarikhy-1.0.13.apk" class="btn-vip-download btn-vip-gold" id="btnDownloadTarikhy">
             <span class="btn-icon-bubble bubble-gold">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                  <polyline points="7 10 12 15 17 10"></polyline>
-                  <line x1="12" y1="15" x2="12" y2="3"></line>
-                </svg>
-              </span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="dl-svg">
+                <g class="dl-arrow-group">
+                  <path d="M12 3v10m0 0l-4-4m4 4l4-4" stroke="url(#dlGradGold)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+                <path d="M4 17v1.5A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5V17" stroke="#F59E0B" stroke-width="2.2" stroke-linecap="round"/>
+                <circle cx="12" cy="18.5" r="1.1" fill="#FEF08A"/>
+              </svg>
+            </span>
             <span>تحميل تطبيق تاريخي (v1.0.13)</span>
           </a>
         </div>
@@ -1669,7 +1963,7 @@
       <article class="vip-card vip-card-fizyai" id="cardFizyai">
         <div class="vip-card-status-bar">
           <span class="badge-status badge-status-green">
-            <span>متاح الآن للتحميل (v1.0.0)</span>
+            <span>متاح الآن للتحميل (v1.0.1)</span>
             <span>✅</span>
           </span>
         </div>
@@ -1708,12 +2002,14 @@
           </a>
           <a href="https://github.com/drahmedselim2040/tarikhy-download/releases/download/fizyai-v1.0.1/physics-release.apk" download="fizyai-1.0.1.apk" class="btn-vip-download btn-vip-cyan" id="btnDownloadFizyai">
             <span class="btn-icon-bubble bubble-cyan">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                  <polyline points="7 10 12 15 17 10"></polyline>
-                  <line x1="12" y1="15" x2="12" y2="3"></line>
-                </svg>
-              </span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="dl-svg">
+                <g class="dl-arrow-group">
+                  <path d="M12 3v10m0 0l-4-4m4 4l4-4" stroke="url(#dlGradCyan)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+                <path d="M4 17v1.5A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5V17" stroke="#06B6D4" stroke-width="2.2" stroke-linecap="round"/>
+                <circle cx="12" cy="18.5" r="1.1" fill="#A5F3FC"/>
+              </svg>
+            </span>
             <span>تحميل تطبيق فيزيائي (v1.0.1)</span>
           </a>
         </div>
@@ -1723,7 +2019,7 @@
       <article class="vip-card vip-card-oustoura" id="cardOustoura">
         <div class="vip-card-status-bar">
           <span class="badge-status badge-status-green">
-            <span>متاح الآن للتحميل (v1.0.0)</span>
+            <span>متاح الآن للتحميل (v1.0.1)</span>
             <span>✅</span>
           </span>
         </div>
@@ -1761,13 +2057,15 @@
             📱
           </a>
           <a href="https://github.com/drahmedselim2040/tarikhy-download/releases/download/oustoura-v1.0.1/arabic-release.apk" download="oustoura-1.0.1.apk" class="btn-vip-download btn-vip-oustoura" id="btnDownloadOustoura">
-            <span class="btn-icon-bubble bubble-amber">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                  <polyline points="7 10 12 15 17 10"></polyline>
-                  <line x1="12" y1="15" x2="12" y2="3"></line>
-                </svg>
-              </span>
+            <span class="btn-icon-bubble bubble-purple">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="dl-svg">
+                <g class="dl-arrow-group">
+                  <path d="M12 3v10m0 0l-4-4m4 4l4-4" stroke="url(#dlGradPurple)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+                <path d="M4 17v1.5A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5V17" stroke="#C084FC" stroke-width="2.2" stroke-linecap="round"/>
+                <circle cx="12" cy="18.5" r="1.1" fill="#F3E8FF"/>
+              </svg>
+            </span>
             <span>تحميل تطبيق الأسطورة (v1.0.1)</span>
           </a>
         </div>
