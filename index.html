@@ -171,23 +171,156 @@
       color: var(--gold-400);
       background: rgba(212, 175, 55, 0.08);
     }
+    
     .nav-btn-action {
-      background: linear-gradient(135deg, var(--gold-500), var(--gold-dark));
-      color: #040A14 !important;
+      background: linear-gradient(135deg, #FFF3BF 0%, #D4AF37 40%, #A37F18 100%);
+      color: #050E1C !important;
       font-weight: 900;
-      font-size: 0.9rem;
-      padding: 9px 20px;
+      font-size: 0.92rem;
+      padding: 8px 18px 8px 12px;
       border-radius: 50px;
-      box-shadow: 0 4px 15px var(--gold-glow);
-      transition: all 0.25s ease;
+      box-shadow: 0 4px 18px rgba(212, 175, 55, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.7);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .nav-btn-action::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -60%;
+      width: 40px;
+      height: 200%;
+      background: rgba(255, 255, 255, 0.35);
+      transform: rotate(25deg);
+      animation: navShine 3.5s infinite ease-in-out;
+      pointer-events: none;
+    }
+    @keyframes navShine {
+      0% { right: -60%; }
+      30% { right: 140%; }
+      100% { right: 140%; }
     }
     .nav-btn-action:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 22px rgba(212, 175, 55, 0.5);
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 8px 28px rgba(212, 175, 55, 0.65), inset 0 1px 2px rgba(255, 255, 255, 0.9);
+      background: linear-gradient(135deg, #FFFFFF 0%, #F5D77F 40%, #B89020 100%);
     }
+    .nav-btn-action:active {
+      transform: scale(0.97);
+    }
+    .nav-btn-icon-wrap {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: rgba(5, 14, 28, 0.9);
+      color: #F3CF65;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      transition: transform 0.25s ease;
+    }
+    .nav-btn-action:hover .nav-btn-icon-wrap {
+      transform: translateY(1px);
+      background: #040A14;
+      color: #FFE699;
+    }
+    .nav-btn-icon-wrap svg {
+      animation: pulseArrow 1.8s infinite ease-in-out;
+    }
+    @keyframes pulseArrow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(2px); }
+    }
+
+    /* Interactive Download Notification Overlay (The magic from version 1) */
+    .download-toast-box {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%) translateY(120px);
+      background: rgba(5, 14, 28, 0.96);
+      border: 1px solid var(--gold-500);
+      border-radius: 20px;
+      padding: 16px 24px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(212, 175, 55, 0.35);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 9999;
+      max-width: 480px;
+      width: 90%;
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+      direction: rtl;
+      text-align: right;
+    }
+    .download-toast-box.active {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .dl-toast-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .dl-toast-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.98rem;
+      font-weight: 900;
+      color: #FFFFFF;
+    }
+    .dl-toast-title span.badge {
+      background: rgba(16, 185, 129, 0.2);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #34D399;
+      font-size: 0.72rem;
+      padding: 2px 8px;
+      border-radius: 50px;
+    }
+    .dl-toast-close {
+      background: transparent;
+      border: none;
+      color: #94A3B8;
+      font-size: 1.1rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .dl-toast-close:hover { color: #FFFFFF; }
+    .dl-toast-progress-bar {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50px;
+      height: 8px;
+      overflow: hidden;
+      margin-bottom: 10px;
+      position: relative;
+    }
+    .dl-toast-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #D4AF37, #FFE699, #00D2FF);
+      border-radius: 50px;
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+      transition: width 0.15s ease;
+    }
+    .dl-toast-guidance {
+      font-size: 0.8rem;
+      color: #CBD5E1;
+      line-height: 1.5;
+    }
+    .dl-toast-guidance b {
+      color: var(--gold-300);
+    }
+
 
     /* Hero Section */
     .hero {
@@ -1334,8 +1467,15 @@
         <a href="#install" class="nav-link">طريقة التثبيت</a>
         <a href="#faq" class="nav-link">الأسئلة الشائعة</a>
       </nav>
-      <a href="#apps" class="nav-btn-action">
-        <span>تحميل التطبيقات ↓</span>
+      <a href="#apps" class="nav-btn-action" id="headerDownloadBtn">
+        <span class="nav-btn-icon-wrap">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+        </span>
+        <span>تحميل التطبيقات</span>
       </a>
     </div>
   </header>
@@ -1849,6 +1989,77 @@
         item.classList.add('active');
       }
     }
+  </script>
+
+
+  <!-- INTERACTIVE DOWNLOAD NOTIFICATION (As requested: the beautiful feedback from version 1) -->
+  <div class="download-toast-box" id="downloadToastBox">
+    <div class="dl-toast-header">
+      <div class="dl-toast-title">
+        <span>🚀</span>
+        <span id="dlToastAppName">جارٍ بدء التنزيل...</span>
+        <span class="badge">APK رسمي</span>
+      </div>
+      <button class="dl-toast-close" onclick="closeDownloadToast()">✕</button>
+    </div>
+    <div class="dl-toast-progress-bar">
+      <div class="dl-toast-progress-fill" id="dlToastProgressFill"></div>
+    </div>
+    <div class="dl-toast-guidance">
+      ✅ بدأ تنزيل التطبيق بهاتفك. إذا ظهر تنبيه <b>«قد يكون الملف ضاراً»</b>، اضغط <b>«تنزيل على أي حال / Download anyway»</b> (تنبيه أمان عام للملفات خارج المتجر).
+    </div>
+  </div>
+
+
+  <script>
+    let toastHideTimer;
+    function triggerDownloadFeedback(appName) {
+      const box = document.getElementById('downloadToastBox');
+      const title = document.getElementById('dlToastAppName');
+      const bar = document.getElementById('dlToastProgressFill');
+      if (!box || !bar) return;
+
+      if (title && appName) {
+        title.textContent = 'بدأ تنزيل ' + appName;
+      }
+
+      bar.style.width = '0%';
+      box.classList.add('active');
+
+      let p = 0;
+      const interval = setInterval(() => {
+        p += 25;
+        if (p > 100) p = 100;
+        bar.style.width = p + '%';
+        if (p >= 100) clearInterval(interval);
+      }, 100);
+
+      clearTimeout(toastHideTimer);
+      toastHideTimer = setTimeout(() => {
+        box.classList.remove('active');
+      }, 7000);
+    }
+
+    function closeDownloadToast() {
+      const box = document.getElementById('downloadToastBox');
+      if (box) box.classList.remove('active');
+    }
+
+    // Attach to all download buttons
+    document.addEventListener('DOMContentLoaded', () => {
+      const bTarikhy = document.getElementById('btnDownloadTarikhy');
+      if (bTarikhy) {
+        bTarikhy.addEventListener('click', () => triggerDownloadFeedback('تطبيق تاريخي'));
+      }
+      const bFizyai = document.getElementById('btnDownloadFizyai');
+      if (bFizyai) {
+        bFizyai.addEventListener('click', () => triggerDownloadFeedback('تطبيق فيزيائي'));
+      }
+      const bOustoura = document.getElementById('btnDownloadOustoura');
+      if (bOustoura) {
+        bOustoura.addEventListener('click', () => triggerDownloadFeedback('تطبيق الأسطورة'));
+      }
+    });
   </script>
 
 </body>
