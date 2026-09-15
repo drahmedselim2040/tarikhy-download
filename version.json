@@ -1,6 +1,13 @@
 {
   "app": "nokhba",
   "platform_name": "منصة نخبة البكالوريا",
+  "version": "1.0.13",
+  "min_supported": "1.0.0",
+  "apk": "app-release.apk",
+  "page": "index.html",
+  "download_url": "https://github.com/drahmedselim2040/tarikhy-download/releases/download/v1.0.13/app-release.apk",
+  "notes": "إصدار 1.0.13: نظام استرداد المدفوعات وتصدير كشوف حساب المجموعات ووضع المالك المخفي",
+  "updated_at": "2026-09-15",
   "tarikhy": {
     "name": "تطبيق تاريخي",
     "teacher": "د. أحمد سليم (مؤسس المنصة وخبير التاريخ الوطني)",
