@@ -1310,9 +1310,495 @@
         height: 360px;
       }
     }
-  </style>
+  
+    /* ==============================================================
+       LUXURY HERO QUICK-DOWNLOAD CENTER & LIVE DOWNLOAD MODAL
+       ============================================================== */
+    
+    /* Background Canvas Particles */
+    #ambientCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.65;
+    }
+
+    /* Hero Quick Download Grid */
+    .hero-quick-center {
+      margin: 35px auto 10px;
+      max-width: 1080px;
+      position: relative;
+      z-index: 5;
+    }
+    .hero-quick-header {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 6px 18px;
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--gold-300);
+      margin-bottom: 22px;
+      backdrop-filter: blur(10px);
+    }
+    .hero-quick-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 900px) {
+      .hero-quick-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        margin: 0 auto;
+      }
+    }
+
+    .quick-dl-card {
+      background: rgba(7, 21, 43, 0.65);
+      border-radius: 22px;
+      padding: 24px 20px;
+      position: relative;
+      border: 1px solid var(--border-light);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      text-align: right;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    }
+    .quick-dl-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      opacity: 0.8;
+      transition: all 0.3s ease;
+    }
+    .quick-dl-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Card Themes */
+    .card-theme-tarikhy {
+      border-color: rgba(212, 175, 55, 0.35);
+    }
+    .card-theme-tarikhy::before {
+      background: linear-gradient(90deg, #D4AF37, #FFE699, #D4AF37);
+    }
+    .card-theme-tarikhy:hover {
+      border-color: rgba(212, 175, 55, 0.7);
+      box-shadow: 0 25px 60px rgba(212, 175, 55, 0.2);
+    }
+
+    .card-theme-fizyai {
+      border-color: rgba(0, 210, 255, 0.35);
+    }
+    .card-theme-fizyai::before {
+      background: linear-gradient(90deg, #00D2FF, #38BDF8, #00D2FF);
+    }
+    .card-theme-fizyai:hover {
+      border-color: rgba(0, 210, 255, 0.7);
+      box-shadow: 0 25px 60px rgba(0, 210, 255, 0.2);
+    }
+
+    .card-theme-oustoura {
+      border-color: rgba(243, 207, 101, 0.35);
+    }
+    .card-theme-oustoura::before {
+      background: linear-gradient(90deg, #F3CF65, #E5C058, #B89020);
+    }
+    .card-theme-oustoura:hover {
+      border-color: rgba(243, 207, 101, 0.7);
+      box-shadow: 0 25px 60px rgba(243, 207, 101, 0.2);
+    }
+
+    .quick-card-top {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .quick-app-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      object-fit: cover;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+      flex-shrink: 0;
+    }
+    .quick-app-meta h4 {
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: #FFFFFF;
+      line-height: 1.25;
+    }
+    .quick-app-meta span {
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+    .card-theme-tarikhy .quick-app-meta span { color: var(--gold-400); }
+    .card-theme-fizyai .quick-app-meta span { color: var(--turq-400); }
+    .card-theme-oustoura .quick-app-meta span { color: #F59E0B; }
+
+    .quick-tags-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+    .quick-tag {
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #CBD5E1;
+    }
+    .quick-tag.version-tag {
+      background: rgba(16, 185, 129, 0.15);
+      border-color: rgba(16, 185, 129, 0.4);
+      color: #34D399;
+    }
+
+    .quick-action-buttons {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: auto;
+    }
+    .btn-quick-download {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 16px;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      font-weight: 900;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+    .btn-quick-download:active {
+      transform: scale(0.97);
+    }
+    .card-theme-tarikhy .btn-quick-download {
+      background: linear-gradient(135deg, #D4AF37, #B89020);
+      color: #040A14;
+    }
+    .card-theme-tarikhy .btn-quick-download:hover {
+      box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+      background: linear-gradient(135deg, #FFE699, #D4AF37);
+    }
+
+    .card-theme-fizyai .btn-quick-download {
+      background: linear-gradient(135deg, #00D2FF, #0284C7);
+      color: #040A14;
+    }
+    .card-theme-fizyai .btn-quick-download:hover {
+      box-shadow: 0 8px 25px rgba(0, 210, 255, 0.5);
+      background: linear-gradient(135deg, #38BDF8, #00D2FF);
+    }
+
+    .card-theme-oustoura .btn-quick-download {
+      background: linear-gradient(135deg, #F3CF65, #D97706);
+      color: #040A14;
+    }
+    .card-theme-oustoura .btn-quick-download:hover {
+      box-shadow: 0 8px 25px rgba(243, 207, 101, 0.5);
+      background: linear-gradient(135deg, #FDE68A, #F59E0B);
+    }
+
+    .btn-quick-qr {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: #FFFFFF;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      flex-shrink: 0;
+    }
+    .btn-quick-qr:hover {
+      background: rgba(255, 255, 255, 0.18);
+      transform: scale(1.06);
+      border-color: #FFFFFF;
+    }
+
+    /* ==============================================================
+       INTERACTIVE LIVE DOWNLOAD MODAL & PROGRESS OVERLAY
+       ============================================================== */
+    .live-download-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 6, 15, 0.85);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      animation: fadeInModal 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .live-download-overlay.active {
+      display: flex;
+    }
+
+    @keyframes fadeInModal {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .download-modal-box {
+      background: linear-gradient(165deg, #07152B 0%, #050E1C 100%);
+      border: 1px solid var(--border-gold);
+      border-radius: 28px;
+      max-width: 540px;
+      width: 100%;
+      padding: 34px 28px;
+      box-shadow: 0 35px 80px rgba(0, 0, 0, 0.8), 0 0 40px rgba(212, 175, 55, 0.25);
+      position: relative;
+      text-align: center;
+      animation: scaleUpModal 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes scaleUpModal {
+      from { transform: scale(0.92); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #FFFFFF;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .modal-close-btn:hover {
+      background: rgba(239, 68, 68, 0.3);
+      border-color: #EF4444;
+      transform: rotate(90deg);
+    }
+
+    .modal-icon-pulse {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 16px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-icon-pulse img {
+      width: 68px;
+      height: 68px;
+      border-radius: 18px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+      position: relative;
+      z-index: 2;
+    }
+    .pulse-ring {
+      position: absolute;
+      inset: -8px;
+      border-radius: 26px;
+      border: 2px solid var(--gold-500);
+      opacity: 0.8;
+      animation: pulseGlow 1.8s infinite ease-out;
+    }
+    @keyframes pulseGlow {
+      0% { transform: scale(0.95); opacity: 0.9; }
+      70% { transform: scale(1.25); opacity: 0; }
+      100% { transform: scale(1.25); opacity: 0; }
+    }
+
+    .modal-title {
+      font-size: 1.45rem;
+      font-weight: 900;
+      color: #FFFFFF;
+      margin-bottom: 6px;
+    }
+    .modal-subtitle {
+      font-size: 0.92rem;
+      color: var(--gold-400);
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    /* Live Progress Bar */
+    .dl-progress-container {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 50px;
+      height: 12px;
+      overflow: hidden;
+      margin-bottom: 10px;
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .dl-progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #D4AF37, #F3CF65, #00D2FF);
+      border-radius: 50px;
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.7);
+      transition: width 0.15s ease-out;
+    }
+    .dl-progress-status {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: #CBD5E1;
+      margin-bottom: 24px;
+    }
+
+    /* Mini Installation Steps */
+    .modal-steps-box {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 16px;
+      text-align: right;
+      margin-bottom: 22px;
+    }
+    .modal-steps-box h5 {
+      font-size: 0.88rem;
+      font-weight: 900;
+      color: #FFFFFF;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 8px;
+      font-size: 0.8rem;
+      color: #94A3B8;
+      line-height: 1.45;
+    }
+    .step-item:last-child {
+      margin-bottom: 0;
+    }
+    .step-num {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(212, 175, 55, 0.2);
+      color: var(--gold-300);
+      font-weight: 900;
+      font-size: 0.72rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .modal-footer-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-modal-action {
+      flex: 1;
+      padding: 11px 16px;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-modal-redownload {
+      background: rgba(255, 255, 255, 0.08);
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .btn-modal-redownload:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+    .btn-modal-whatsapp {
+      background: #25D366;
+      color: #040A14;
+    }
+    .btn-modal-whatsapp:hover {
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+    }
+
+    /* Floating Toast */
+    .floating-toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(5, 14, 28, 0.95);
+      border: 1px solid var(--border-gold);
+      border-radius: 50px;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.7), 0 0 20px rgba(212, 175, 55, 0.3);
+      backdrop-filter: blur(15px);
+      z-index: 10000;
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+    .floating-toast.active {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .toast-icon {
+      font-size: 1.3rem;
+    }
+    .toast-text {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: #FFFFFF;
+    }
+
+</style>
 </head>
 <body>
+  <canvas id="ambientCanvas"></canvas>
 
   <div class="ambient-glow"></div>
 
@@ -1353,6 +1839,90 @@
         صرح تعليمي رقمي متكامل يجمع نخبة ألمع أساتذة الثانوية العامة لتقديم أرقى تجربة تعليمية ذكية، تجمع بين الشرح الاحترافي، بنوك الأسئلة الوزارية، والامتحانات المؤمّنة بالكامل.
       </p>
     </section>
+
+    <!-- ==============================================================
+         HERO TRIPLE APP VIP QUICK-DOWNLOAD CENTER
+         ============================================================== -->
+    <div class="hero-quick-center">
+      <div class="hero-quick-header">
+        <span>⚡</span>
+        <span>بوابة التحميل السريع للتطبيقات الثلاثة الرسمية</span>
+      </div>
+
+      <div class="hero-quick-grid">
+        <!-- 1. TARIKHY QUICK CARD -->
+        <div class="quick-dl-card card-theme-tarikhy">
+          <div class="quick-card-top">
+            <img src="tarikhy-app-icon.png" alt="أيقونة تطبيق تاريخي" class="quick-app-icon">
+            <div class="quick-app-meta">
+              <h4>تطبيق تاريخي</h4>
+              <span>خبير التاريخ: أ. أحمد سليم</span>
+            </div>
+          </div>
+          <div class="quick-tags-row">
+            <span class="quick-tag version-tag">v1.0.13 متاح الآن</span>
+            <span class="quick-tag">📦 95.5 MB</span>
+            <span class="quick-tag">🛡️ موقّع وآمن</span>
+          </div>
+          <div class="quick-action-buttons">
+            <button class="btn-quick-download" onclick="triggerDownloadFlow('tarikhy')">
+              <span>⬇ تحميل APK</span>
+            </button>
+            <button class="btn-quick-qr" title="مسح الـ QR للتحميل المباشر" onclick="openDedicatedQr('tarikhy')">
+              <span>📱</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 2. FIZYAI QUICK CARD -->
+        <div class="quick-dl-card card-theme-fizyai">
+          <div class="quick-card-top">
+            <img src="fizyai-badge.png" alt="أيقونة تطبيق فيزيائي" class="quick-app-icon">
+            <div class="quick-app-meta">
+              <h4>تطبيق فيزيائي</h4>
+              <span>أستاذ الفيزياء: أ. مصطفى الحويري</span>
+            </div>
+          </div>
+          <div class="quick-tags-row">
+            <span class="quick-tag version-tag">v1.0.1 متاح الآن</span>
+            <span class="quick-tag">📦 95.5 MB</span>
+            <span class="quick-tag">⚡ بنك أسئلة ذكي</span>
+          </div>
+          <div class="quick-action-buttons">
+            <button class="btn-quick-download" onclick="triggerDownloadFlow('fizyai')">
+              <span>⬇ تحميل APK</span>
+            </button>
+            <button class="btn-quick-qr" title="مسح الـ QR للتحميل المباشر" onclick="openDedicatedQr('fizyai')">
+              <span>📱</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 3. OUSTOURA QUICK CARD -->
+        <div class="quick-dl-card card-theme-oustoura">
+          <div class="quick-card-top">
+            <img src="oustoura-badge.png" alt="أيقونة تطبيق الأسطورة" class="quick-app-icon">
+            <div class="quick-app-meta">
+              <h4>تطبيق الأسطورة</h4>
+              <span>أسطورة العربي: أ. أحمد بده</span>
+            </div>
+          </div>
+          <div class="quick-tags-row">
+            <span class="quick-tag version-tag">v1.0.1 متاح الآن</span>
+            <span class="quick-tag">📦 96.1 MB</span>
+            <span class="quick-tag">📜 نحو وبلاغة وأدب</span>
+          </div>
+          <div class="quick-action-buttons">
+            <button class="btn-quick-download" onclick="triggerDownloadFlow('oustoura')">
+              <span>⬇ تحميل APK</span>
+            </button>
+            <button class="btn-quick-qr" title="مسح الـ QR للتحميل المباشر" onclick="openDedicatedQr('oustoura')">
+              <span>📱</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- ==============================================================
          TEACHERS SHOWCASE (Photo Portrait Cards)
@@ -1848,6 +2418,279 @@
       if (!isActive) {
         item.classList.add('active');
       }
+    }
+  </script>
+
+
+  <!-- ==============================================================
+       INTERACTIVE LIVE DOWNLOAD MODAL & PROGRESS OVERLAY
+       ============================================================== -->
+  <div class="live-download-overlay" id="downloadModalOverlay">
+    <div class="download-modal-box" id="downloadModalCard">
+      <button class="modal-close-btn" onclick="closeDownloadModal()">✕</button>
+      
+      <div class="modal-icon-pulse">
+        <div class="pulse-ring"></div>
+        <img id="modalAppIcon" src="nokhba-logo.png" alt="أيقونة التطبيق">
+      </div>
+
+      <h3 class="modal-title" id="modalAppName">جارٍ بدء التنزيل...</h3>
+      <p class="modal-subtitle" id="modalAppVersion">الإصدار الرسمي لمنصة نخبة البكالوريا</p>
+
+      <div class="dl-progress-container">
+        <div class="dl-progress-bar" id="modalProgressBar"></div>
+      </div>
+      <div class="dl-progress-status">
+        <span id="modalProgressStatus">جارٍ الاتصال بالسيرفر الآمن...</span>
+        <span id="modalProgressPercent">0%</span>
+      </div>
+
+      <div class="modal-steps-box">
+        <h5>💡 خطوات التثبيت السريع على هاتفك:</h5>
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <span>افتح شريط الإشعارات بهاتفك فور اكتمال التنزيل واضغط على الملف.</span>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <span>إذا ظهر لك تنبيه أمان «قد يكون الملف ضاراً»، اضغط بثقة <b>«تنزيل على أي حال / Download anyway»</b> (تنبيه قياسي لتطبيقات المتصفح).</span>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <span>اضغط <b>«تثبيت / Install»</b> ثم افتح التطبيق واستمتع بكافة الميزات.</span>
+        </div>
+      </div>
+
+      <div class="modal-footer-actions">
+        <button class="btn-modal-action btn-modal-redownload" id="btnModalRedownload" onclick="retriggerCurrentDownload()">
+          <span>🔄 إعادة بدء التحميل</span>
+        </button>
+        <a id="btnModalWhatsAppHelp" href="https://wa.me/201004318036?text=مرحباً،%20أحتاج%20مساعدة%20في%20تحميل%20تطبيقات%20المنصة" target="_blank" class="btn-modal-action btn-modal-whatsapp">
+          <span>💬 مساعدة واتساب</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING TOAST -->
+  <div class="floating-toast" id="floatingToast">
+    <span class="toast-icon">🚀</span>
+    <span class="toast-text" id="toastMessage">بدأ تنزيل التطبيق الآن!</span>
+  </div>
+
+
+  <script>
+    // ==============================================================
+    // TRIPLE APPS METADATA REGISTRY
+    // ==============================================================
+    const APPS_DATA = {
+      tarikhy: {
+        name: 'تطبيق تاريخي',
+        teacher: 'د. أحمد سليم (خبير التاريخ)',
+        version: '1.0.13',
+        size: '95.5 MB',
+        icon: 'tarikhy-app-icon.png',
+        apk: 'https://github.com/drahmedselim2040/tarikhy-download/releases/download/v1.0.13/app-release.apk',
+        filename: 'tarikhy-1.0.13.apk',
+        color: '#D4AF37'
+      },
+      fizyai: {
+        name: 'تطبيق فيزيائي',
+        teacher: 'أ. مصطفى الحويري (أستاذ الفيزياء)',
+        version: '1.0.1',
+        size: '95.5 MB',
+        icon: 'fizyai-badge.png',
+        apk: 'https://github.com/drahmedselim2040/tarikhy-download/releases/download/fizyai-v1.0.1/physics-release.apk',
+        filename: 'fizyai-1.0.1.apk',
+        color: '#00D2FF'
+      },
+      oustoura: {
+        name: 'تطبيق الأسطورة',
+        teacher: 'أ. أحمد بده (أسطورة اللغة العربية)',
+        version: '1.0.1',
+        size: '96.1 MB',
+        icon: 'oustoura-badge.png',
+        apk: 'https://github.com/drahmedselim2040/tarikhy-download/releases/download/oustoura-v1.0.1/arabic-release.apk',
+        filename: 'oustoura-1.0.1.apk',
+        color: '#F59E0B'
+      }
+    };
+
+    let currentDownloadingApp = 'tarikhy';
+
+    // TRIGGER INTERACTIVE DOWNLOAD FLOW
+    function triggerDownloadFlow(appKey) {
+      const app = APPS_DATA[appKey] || APPS_DATA.tarikhy;
+      currentDownloadingApp = appKey;
+
+      // Update Modal content
+      document.getElementById('modalAppIcon').src = app.icon;
+      document.getElementById('modalAppName').textContent = 'جارٍ تجهيز ' + app.name;
+      document.getElementById('modalAppVersion').textContent = 'الإصدار ' + app.version + ' • الحجم ' + app.size + ' • ' + app.teacher;
+      
+      const pBar = document.getElementById('modalProgressBar');
+      const pText = document.getElementById('modalProgressPercent');
+      const pStatus = document.getElementById('modalProgressStatus');
+
+      pBar.style.width = '0%';
+      pText.textContent = '0%';
+      pStatus.textContent = 'جارٍ الاتصال بالسيرفر والتحقق من التوقيع...';
+
+      // Show Modal
+      document.getElementById('downloadModalOverlay').classList.add('active');
+
+      // Animate Progress Bar
+      let progress = 0;
+      const interval = setInterval(() => {
+        progress += Math.floor(Math.random() * 20) + 15;
+        if (progress > 100) progress = 100;
+        
+        pBar.style.width = progress + '%';
+        pText.textContent = progress + '%';
+
+        if (progress > 30 && progress < 80) {
+          pStatus.textContent = 'جارٍ إرسال حزمة الـ APK إلى هاتفك...';
+        } else if (progress >= 100) {
+          clearInterval(interval);
+          pStatus.textContent = '✅ بدأ التنزيل بنجاح! راجع شريط الإشعارات بهاتفك';
+          showToast('🚀 بدأ تنزيل ' + app.name + ' (' + app.version + ') على هاتفك!');
+        }
+      }, 120);
+
+      // Trigger Actual File Download via invisible link
+      const dlLink = document.createElement('a');
+      dlLink.href = app.apk;
+      dlLink.download = app.filename;
+      document.body.appendChild(dlLink);
+      dlLink.click();
+      document.body.removeChild(dlLink);
+    }
+
+    function retriggerCurrentDownload() {
+      triggerDownloadFlow(currentDownloadingApp);
+    }
+
+    function closeDownloadModal() {
+      document.getElementById('downloadModalOverlay').classList.remove('active');
+    }
+
+    function openDedicatedQr(appKey) {
+      const app = APPS_DATA[appKey] || APPS_DATA.tarikhy;
+      const qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=' + encodeURIComponent(app.apk);
+      
+      // We can display QR directly in a sweet modal
+      document.getElementById('modalAppIcon').src = app.icon;
+      document.getElementById('modalAppName').textContent = 'مسح QR لتحميل ' + app.name;
+      document.getElementById('modalAppVersion').textContent = 'وجّه كاميرا هاتفك لتحميل الـ APK مباشرة';
+      
+      const pBar = document.getElementById('modalProgressBar');
+      pBar.style.width = '100%';
+      document.getElementById('modalProgressPercent').textContent = '📱';
+      document.getElementById('modalProgressStatus').innerHTML = '<img src="' + qrUrl + '" style="width:180px; height:180px; border-radius:14px; margin: 12px auto; display:block; box-shadow: 0 4px 15px rgba(0,0,0,0.4);">';
+      
+      document.getElementById('downloadModalOverlay').classList.add('active');
+    }
+
+    // Floating Toast Notification
+    let toastTimeout;
+    function showToast(msg) {
+      const toast = document.getElementById('floatingToast');
+      const text = document.getElementById('toastMessage');
+      if (!toast || !text) return;
+
+      text.textContent = msg;
+      toast.classList.add('active');
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('active');
+      }, 4500);
+    }
+
+    // Connect all existing download buttons in VIP Cards to trigger the same luxury flow
+    document.addEventListener('DOMContentLoaded', () => {
+      const btnTarikhy = document.getElementById('btnDownloadTarikhy');
+      if (btnTarikhy) {
+        btnTarikhy.addEventListener('click', (e) => {
+          e.preventDefault();
+          triggerDownloadFlow('tarikhy');
+        });
+      }
+
+      const btnFizyai = document.getElementById('btnDownloadFizyai');
+      if (btnFizyai) {
+        btnFizyai.addEventListener('click', (e) => {
+          e.preventDefault();
+          triggerDownloadFlow('fizyai');
+        });
+      }
+
+      const btnOustoura = document.getElementById('btnDownloadOustoura');
+      if (btnOustoura) {
+        btnOustoura.addEventListener('click', (e) => {
+          e.preventDefault();
+          triggerDownloadFlow('oustoura');
+        });
+      }
+
+      // Close modal on background click
+      const overlay = document.getElementById('downloadModalOverlay');
+      if (overlay) {
+        overlay.addEventListener('click', (e) => {
+          if (e.target === overlay) closeDownloadModal();
+        });
+      }
+
+      // Initialize Ambient Background Canvas
+      initAmbientCanvas();
+    });
+
+    // AMBIENT PARTICLES CANVAS
+    function initAmbientCanvas() {
+      const canvas = document.getElementById('ambientCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let w = canvas.width = window.innerWidth;
+      let h = canvas.height = window.innerHeight;
+
+      window.addEventListener('resize', () => {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+      });
+
+      const particles = [];
+      const count = Math.min(Math.floor(w / 28), 45);
+      const colors = ['rgba(212, 175, 55, 0.4)', 'rgba(0, 210, 255, 0.35)', 'rgba(255, 255, 255, 0.25)'];
+
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          r: Math.random() * 2 + 0.8,
+          dx: (Math.random() - 0.5) * 0.4,
+          dy: (Math.random() - 0.5) * 0.4,
+          color: colors[Math.floor(Math.random() * colors.length)]
+        });
+      }
+
+      function render() {
+        ctx.clearRect(0, 0, w, h);
+        particles.forEach(p => {
+          p.x += p.dx;
+          p.y += p.dy;
+          if (p.x < 0) p.x = w;
+          if (p.x > w) p.x = 0;
+          if (p.y < 0) p.y = h;
+          if (p.y > h) p.y = 0;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.fill();
+        });
+        requestAnimationFrame(render);
+      }
+      render();
     }
   </script>
 
