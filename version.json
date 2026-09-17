@@ -1,23 +1,23 @@
 {
   "app": "nokhba",
   "platform_name": "منصة نخبة البكالوريا",
-  "version": "1.0.15",
+  "version": "1.0.14",
   "min_supported": "1.0.0",
   "apk": "app-release.apk",
   "page": "index.html",
-  "download_url": "https://github.com/drahmedselim2040/tarikhy-download/releases/download/v1.0.15/app-release.apk",
-  "notes": "إصدار 1.0.15",
-  "updated_at": "2026-09-17",
+  "download_url": "https://github.com/drahmedselim2040/tarikhy-download/releases/download/v1.0.14/app-release.apk",
+  "notes": "إصدار 1.0.14: نظام طباعة الامتحانات الاحترافية الفاخر وعزل الهويات والتنسيق المطور",
+  "updated_at": "2026-09-15",
   "tarikhy": {
     "name": "تطبيق تاريخي",
     "teacher": "د. أحمد سليم (مؤسس المنصة وخبير التاريخ الوطني)",
-    "version": "1.0.15",
+    "version": "1.0.14",
     "min_supported": "1.0.0",
     "apk": "app-release.apk",
-    "download_url": "https://github.com/drahmedselim2040/tarikhy-download/releases/download/v1.0.15/app-release.apk",
-    "size": "102.0 MB",
-    "updated_at": "2026-09-17",
-    "notes": "إصدار 1.0.15"
+    "download_url": "https://github.com/drahmedselim2040/tarikhy-download/releases/download/v1.0.14/app-release.apk",
+    "size": "96.6 MB",
+    "updated_at": "2026-09-15",
+    "notes": "إصدار 1.0.14: نظام طباعة الامتحانات الاحترافية الفاخر وعزل الهويات والتنسيق المطور"
   },
   "physics": {
     "name": "تطبيق فيزيائي",
